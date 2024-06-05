@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report
 # Function importing Dataset
 def importdata():
 	balance_data = pd.read_csv(
-'../compare_adcn.csv',
+    '../emobase_adcn.csv',
 	sep= ',', header = None)
 	
 	# Printing the dataswet shape
@@ -24,8 +24,8 @@ def importdata():
 def splitdataset(balance_data):
 
 	# Separating the target variable
-	X = balance_data.values[:, 0:6372]
-	Y = balance_data.values[:, 6373]
+	X = balance_data.values[:, 0:987]
+	Y = balance_data.values[:, 988]
 
 	# Splitting the dataset into train and test
 	X_train, X_test, y_train, y_test = train_test_split(
@@ -37,8 +37,8 @@ def splitdataset(balance_data):
 def train_using_gini(X_train, X_test, y_train):
 
 	# Creating the classifier object
-	clf_gini = DecisionTreeClassifier(criterion = "gini",
-			random_state = 50,max_depth=5, min_samples_leaf=5)
+	clf_gini = DecisionTreeClassifier(criterion = "gini",random_state = 50,max_depth=5, min_samples_leaf=5) 
+
 
 	# Performing training
 	clf_gini.fit(X_train, y_train)
@@ -48,9 +48,8 @@ def train_using_gini(X_train, X_test, y_train):
 def tarin_using_entropy(X_train, X_test, y_train):
 
 	# Decision tree with entropy
-	clf_entropy = DecisionTreeClassifier(
-			criterion = "entropy", random_state = 100,
-			max_depth = 3, min_samples_leaf = 5)
+	clf_entropy = DecisionTreeClassifier(criterion = "entropy", random_state = 10,max_depth = 5, min_samples_leaf = 5) 
+
 
 	# Performing training
 	clf_entropy.fit(X_train, y_train)
