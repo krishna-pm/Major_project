@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def importdata():
 	balance_data = pd.read_csv(
-'../compare_adcn.csv',
+'../emobase_adcn.csv',
 	sep= ',', header = None)
 	
 	# Printing the dataswet shape
@@ -22,8 +22,8 @@ def importdata():
 def splitdataset(balance_data):
 
 	# Separating the target variable
-	X = balance_data.values[:, 0:6372]
-	Y = balance_data.values[:, 6373]
+	X = balance_data.values[:, 0:987]
+	Y = balance_data.values[:, 988]
 
 	# Splitting the dataset into train and test
 	X_train, X_test, y_train, y_test = train_test_split(
@@ -35,8 +35,7 @@ def splitdataset(balance_data):
 def train_using_gini(X_train, X_test, y_train):
 
 	# Creating the classifier object
-	clf_gini = RandomForestClassifier(n_estimators=100,criterion='gini',random_state=20,max_depth=5)
-
+	clf_gini = RandomForestClassifier(n_estimators=100,criterion='gini',random_state=100,max_depth=5)
 	# Performing training
 	clf_gini.fit(X_train, y_train)
 	return clf_gini
@@ -44,8 +43,7 @@ def train_using_gini(X_train, X_test, y_train):
 def tarin_using_entropy(X_train, X_test, y_train):
 
 	# Decision tree with entropy
-	clf_entropy = RandomForestClassifier(n_estimators=100,criterion='entropy',random_state=100,max_depth=5)
-
+	clf_entropy = RandomForestClassifier(n_estimators=30,criterion='entropy',random_state=100,max_depth=3)
 	# Performing training
 	clf_entropy.fit(X_train, y_train)
 	return clf_entropy
