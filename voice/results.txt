@@ -1,0 +1,59 @@
+eGeMAPSv02
+
+RandomForestClassifier(n_estimators=30,criterion='gini',random_state=1,max_depth=3)  78%  (FMR): 0.3076923076923077 (FNMR): 0.125
+
+RandomForestClassifier(n_estimators=30,criterion='entropy',random_state=100,max_depth=3)   74%
+
+
+DecisionTreeClassifier(criterion = "gini",random_state = 100,max_depth=2, min_samples_leaf=5)   68%
+
+DecisionTreeClassifier(criterion = "entropy", random_state = 100,max_depth = 2, min_samples_leaf = 5)  70%   (FMR): 0.07692307692307693 .(FNMR): 0.5416666666666666
+
+XGBClassifier(max_depth=12,n_estimators=500,learning_rate = 0.01) 62   (FMR): 0.5   (FNMR): 0.25
+
+voting 68    (FMR): 0.38461538461538464  (FNMR): 0.25
+ann 50   FMR:  0.4782608695652174  FNMR:  0.4444444444444444
+
+compare
+
+RandomForestClassifier(n_estimators=100,criterion='gini',random_state=20,max_depth=5) 66%
+
+RandomForestClassifier(n_estimators=100,criterion='entropy',random_state=100,max_depth=5) 70%  (FMR): 0.46153846153846156 (FNMR): 0.125
+
+
+DecisionTreeClassifier(criterion = "gini",random_state = 50,max_depth=5, min_samples_leaf=5) 68%
+DecisionTreeClassifier(criterion = "entropy", random_state = 100,max_depth = 3, min_samples_leaf = 5) ,(FMR): 0.5 , (FNMR): 0.125
+
+
+XGBClassifier(max_depth=12,n_estimators=300,learning_rate = 1) 76   (FMR): 0.38461538461538464  (FNMR): 0.08333333333333333
+
+VotingClassifier(estimators=[('rf', rf), ('xgb', xg), ('dt', dt)],voting='hard') 76  (FMR): 0.4230769230769231  (FNMR): 0.041666666666666664
+
+
+ann 57  FMR:  0.4888888888888889   FNMR:  0.2
+
+embose
+
+DecisionTreeClassifier(criterion = "gini",random_state = 50,max_depth=5, min_samples_leaf=5) 57.9%
+DecisionTreeClassifier(criterion = "entropy", random_state = 10,max_depth = 5, min_samples_leaf = 5) 64%     (FMR): 0.38461538461538464 , (FNMR): 0.3333333333333333
+
+RandomForestClassifier(n_estimators=100,criterion='gini',random_state=100,max_depth=5) 76%
+RandomForestClassifier(n_estimators=30,criterion='entropy',random_state=100,max_depth=3) 78%  (FMR): 0.30769230769230  (FNMR): 0.125
+
+XGBClassifier(max_depth=12,n_estimators=500,learning_rate = 0.01) 74   (FMR): 0.2692307692307692  (FNMR): 0.25
+
+VotingClassifier(estimators=[('rf', rf), ('xgb', xg), ('dt', dt)],voting='hard') 70   (FMR): 0.34615384615384615   (FNMR): 0.25
+
+
+ann 60  FMR:  0.4  FNMR:  0.36
+
+
+
+
+
+
+image
+
+Accuracy :  97.6875
+FMR:  0.015584415584415584
+FNMR:  0.018072289156626505
