@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 # load data
 def importdata():
-	balance_data = pd.read_csv('../compare_adcn.csv',sep= ',', header = None)
+	balance_data = pd.read_csv('../eGeMAPSv02_adcn.csv',sep= ',', header = None)
 	
 	# Printing the dataswet shape
 	print ("Dataset Length: ", len(balance_data))
@@ -20,8 +20,8 @@ def importdata():
 def splitdataset(balance_data):
 
 	# Separating the target variable
-	X = balance_data.values[:, 0:6372]
-	Y = balance_data.values[:, 6373]
+	X = balance_data.values[:, 0:87]
+	Y = balance_data.values[:, 88]
 
 	# Splitting the dataset into train and test
 	X_train, X_test, y_train, y_test = train_test_split(
@@ -32,8 +32,7 @@ def splitdataset(balance_data):
 def train_using_xgb(X_train, X_test, y_train):
 
 	# Creating the classifier object
-    model =XGBClassifier(max_depth=12,n_estimators=300,learning_rate = 1) 
-
+    model =XGBClassifier(max_depth=12,n_estimators=500,learning_rate = 1)
     model.fit(X_train, y_train)
     return model
 
@@ -60,7 +59,7 @@ def cal_accuracy(y_test, y_pred):
 
 	print("False Match Rate (FMR):", FMR)
 	print("False Non-Match Rate (FNMR):", FNMR)
-	
+
 	print("Confusion Matrix: ",
 		confusion_matrix(y_test, y_pred))
 	
@@ -92,4 +91,3 @@ def main():
 if __name__=="__main__":
 	main()
 
-# make predictions for test data
